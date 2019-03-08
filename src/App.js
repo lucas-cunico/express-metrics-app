@@ -31,7 +31,7 @@ const styles = theme => ({
 class App extends Component {
   state = {
     check: false,
-    input: "",
+    input: "http://localhost:3000/metrics",
     metrics: []
   };
   handleSwitch() {
@@ -123,7 +123,7 @@ class App extends Component {
                   series: [
                     {
                       data: metrics.map(m =>
-                        Number(m.process.cpu.usage.toFixed(3))
+                        m.process.cpu.usage ? Number(m.process.cpu.usage.toFixed(3)) : 0
                       )
                     }
                   ],
